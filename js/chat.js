@@ -11,7 +11,9 @@ function getOllamaCompletionCallback(chatInstance, userInput) {
       prompt: systemPrompt + userInput,
       stream: false,
     }),
+    credentials: "include",
     mode: "cors",
+    cache: "no-cache",
   })
     .then((response) => response.json())
     .then((data) => {
