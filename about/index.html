@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>Hi, there - My Docs</title>
+    
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.8/daisyui.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.8/themes.css" rel="stylesheet" type="text/css" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet"
+    />
+    <script  type="text/javascript"  src="/js/utils.js" ></script>
+    <script  type="text/javascript"  src="/js/chat.js" ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+
+
+    <script>hljs.highlightAll();</script>
+    <script src="https://unpkg.com/quikchat"></script>
+    <link rel="stylesheet" href="https://unpkg.com/quikchat/dist/quikchat.css" />
+
+
+     
+</head>
+
+<body>
+
+    <div class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+        <a class="btn btn-ghost text-xl">Hi, there</a>
+    </div>
+    <div class="flex gap-2">
+        <input
+            type="text"
+            placeholder="Search"
+            class="input input-bordered w-24 md:w-auto"
+        />
+        <div class="dropdown dropdown-end">
+            <div
+                tabindex="0"
+                role="button"
+                class="btn btn-ghost btn-circle avatar"
+            >
+                <div class="w-10 rounded-full">
+                    <img
+                        alt="Tailwind CSS Navbar component"
+                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    />
+                </div>
+            </div>
+            <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+                <li>
+                    <a class="justify-between">
+                        Profile
+                        <span class="badge">New</span>
+                    </a>
+                </li>
+                <li><a>Settings</a></li>
+                <li><a>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="grid grid-cols-12 gap-4 h-dvh">
+        <div class="col-span-2 col-start-1">
+            <ul class="menu bg-base-200 rounded-box h-full w-full mt-2" id="SIDEMENU">
+     
+    <li>
+        <p
+            onclick="clickSidemenu('/', 'home')"
+            id="SIDEMENU-P-home"
+        >
+            home
+        </p>
+    </li>
+      
+    <li>
+        <details id="SIDEMENU-DETAIL-ideas">
+            <summary>ideas</summary>
+            <ul>
+                
+                <li>
+                    <p
+                        onclick="clickSidemenu('../deepseek', 'ideas'+'.'+'deepseek')"
+                        id="SIDEMENU-P-ideas.deepseek"
+                    >
+                        deepseek
+                    </p>
+                </li>
+                
+                <li>
+                    <p
+                        onclick="clickSidemenu('../llm1', 'ideas'+'.'+'llm1')"
+                        id="SIDEMENU-P-ideas.llm1"
+                    >
+                        llm1
+                    </p>
+                </li>
+                
+                <li>
+                    <p
+                        onclick="clickSidemenu('../llm2', 'ideas'+'.'+'llm2')"
+                        id="SIDEMENU-P-ideas.llm2"
+                    >
+                        llm2
+                    </p>
+                </li>
+                
+                <li>
+                    <p
+                        onclick="clickSidemenu('../llm3', 'ideas'+'.'+'llm3')"
+                        id="SIDEMENU-P-ideas.llm3"
+                    >
+                        llm3
+                    </p>
+                </li>
+                
+                <li>
+                    <p
+                        onclick="clickSidemenu('../test_code', 'ideas'+'.'+'test_code')"
+                        id="SIDEMENU-P-ideas.test_code"
+                    >
+                        test_code
+                    </p>
+                </li>
+                
+            </ul>
+        </details>
+    </li>
+      
+    <li>
+        <p
+            onclick="clickSidemenu('.', 'about')"
+            id="SIDEMENU-P-about"
+        >
+            about
+        </p>
+    </li>
+     
+</ul>
+
+<script type="text/javascript">
+    let sel = getSidemenuSelected((level = 1));
+    if (sel) {
+        const elem = document.getElementById('SIDEMENU-DETAIL-' + sel);
+        if (elem) {
+            elem.setAttribute('open', '');
+        }
+    }
+    const sel2 = getSidemenuSelected();
+    const elem = document.getElementById('SIDEMENU-P-' + sel2);
+    if (elem) {
+        elem.style.backgroundColor = 'rgba(0.16,0.32, 0.96, 0.32)';
+    }
+</script>
+        </div>
+        <div class="col-span-8 col-start-3">
+             <h1 id="hi-there">Hi, there</h1>
+<p>This is Pupu's daddy!</p>
+<p>here's my email(pingf0@gmail) for furthur communication!</p>
+<pre>
+<code class="python">
+if __name__ == '__main__':
+    print("hello world")
+</code>
+</pre>
+        </div>
+        <div class="col-span-1">
+            <div class="drawer drawer-end">
+              <input id="my-drawer-4" type="checkbox" class="drawer-toggle" />
+              <div class="drawer-content">
+                <label for="my-drawer-4" class="drawer-button btn btn-primary">Ask Pupu?</label>
+              </div>
+              <div class="drawer-side">
+                <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+                <div id="chat-container" class="h-3/4 w-120 bg-base-200 text-base-content"></div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const context = `<h1 id="hi-there">Hi, there</h1>
+<p>This is Pupu's daddy!</p>
+<p>here's my email(pingf0@gmail) for furthur communication!</p>
+<pre>
+<code class="python">
+if __name__ == '__main__':
+    print("hello world")
+</code>
+</pre>`;
+        console.log(context);
+        const systemPrompt =
+            'You are a cute little girl whos name is Pupu.\n' +
+            'Your context(with begin and end wrapped below) is: \n' +
+            '----context begin----\n' +
+            context +
+            '----context end----\n' +
+            "Try to understand the context and answer the user's input as accurately as possible and" +
+            "do not make up any answers if you don't know what the user is asking about";
+        const streamingChat = new quikchat(
+            '#chat-container',
+            getOllamaStreamingCallback,
+            {
+                theme: 'quikchat-theme-dark',
+                titleArea: { title: 'Hello, my friend!', show: true, align: 'left' }
+            }
+        );
+        streamingChat.messageAddNew('How can I help? ', 'Pupu', 'left');
+    </script>
+
+    </body>
+
+</html>
+<!--  -->
