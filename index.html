@@ -25,15 +25,15 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet"
     />
-    <script  type="text/javascript"  src="/diary/js/utils.js" ></script>
-    <script  type="text/javascript"  src="/diary/js/chat.js" ></script>
+    <script  type="text/javascript"  src="/js/quickchat.js" ></script>
+    <link rel="stylesheet" href="https://unpkg.com/quikchat/dist/quikchat.css" />
+    <script  type="text/javascript"  src="/js/utils.js" ></script>
+    <script  type="text/javascript"  src="/js/chat.js" ></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/default.min.css">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 
 
     <script>hljs.highlightAll();</script>
-    <script src="https://unpkg.com/quikchat"></script>
-    <link rel="stylesheet" href="https://unpkg.com/quikchat/dist/quikchat.css" />
 
 
      
@@ -101,46 +101,10 @@
                 
                 <li>
                     <p
-                        onclick="clickSidemenu('deepseek', 'ideas'+'.'+'deepseek')"
-                        id="SIDEMENU-P-ideas.deepseek"
+                        onclick="clickSidemenu('markdown', 'ideas'+'.'+'markdown')"
+                        id="SIDEMENU-P-ideas.markdown"
                     >
-                        deepseek
-                    </p>
-                </li>
-                
-                <li>
-                    <p
-                        onclick="clickSidemenu('llm1', 'ideas'+'.'+'llm1')"
-                        id="SIDEMENU-P-ideas.llm1"
-                    >
-                        llm1
-                    </p>
-                </li>
-                
-                <li>
-                    <p
-                        onclick="clickSidemenu('llm2', 'ideas'+'.'+'llm2')"
-                        id="SIDEMENU-P-ideas.llm2"
-                    >
-                        llm2
-                    </p>
-                </li>
-                
-                <li>
-                    <p
-                        onclick="clickSidemenu('llm3', 'ideas'+'.'+'llm3')"
-                        id="SIDEMENU-P-ideas.llm3"
-                    >
-                        llm3
-                    </p>
-                </li>
-                
-                <li>
-                    <p
-                        onclick="clickSidemenu('test_code', 'ideas'+'.'+'test_code')"
-                        id="SIDEMENU-P-ideas.test_code"
-                    >
-                        test_code
+                        markdown
                     </p>
                 </li>
                 
@@ -178,6 +142,20 @@
              <h1 id="welcome-to-mkthoughts">Welcome to MkThoughts</h1>
 <h4 id="a-custom-mkdocs-theme-with-asistant-pupu-to-help-you-summarizing">A custom MkDocs Theme with Asistant Pupu to help you summarizing!</h4>
 <h4 id="be-sure-to-click-the-button-ask-pupu">Be sure to click the button <em>Ask Pupu</em></h4>
+<hr />
+<ul>
+<li>select the correct model you want to use and setup the api key(no need for local model served by tools like ollama)<ul>
+<li>[x] DeepSeek-R1-Full-Reasoning</li>
+<li>[ ] ChatGPT-O1</li>
+<li>[ ] ChatGPT-O3-mini</li>
+<li>[ ] DeepSeek-Distill-QWen-14b-Ollama</li>
+</ul>
+</li>
+<li>talk sth to Pupu, like <code>please help me check the grammar</code></li>
+<li>she'll check the grammar of this article and help you correct it!</li>
+<li>she will keep the context unless you change the page.</li>
+</ul>
+<hr />
 <h4 id="you-can-ask-whatever-you-want-about-the-article-opened-shell-try-her-best-to-help-you-out">you can ask whatever you want about the article opened, she'll try her best to help you out!</h4>
         </div>
         <div class="col-span-1">
@@ -187,8 +165,31 @@
                 <label for="my-drawer-4" class="drawer-button btn btn-primary">Ask Pupu?</label>
               </div>
               <div class="drawer-side">
+
                 <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
-                <div id="chat-container" class="h-3/4 w-120 bg-base-200 text-base-content"></div>
+                <div data-theme="dark" class="w-120 bg-base-200 text-base-content">
+                    <div>
+                        <select class="select select-neutral w-120" >
+                            <option>DeepSeek-R1-Full-Reasoning</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input id="keySelect" type="password" placeholder="Type here" class="input input-bordered max-w-xs w-120" />
+                        <script>
+                            document.getElementById('keySelect').value = localStorage.getItem('keySelect');
+                        </script>
+                    </div>
+                    <div>
+                        <div id="chat-container" class="w-120 bg-base-200 text-base-content" style="height: 600px"></div>
+                        <div id="response"></div>
+                    </div>
+                </div>
+                <!-- <div>
+                    <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+                    <div id="chat-container" class="h-3/4 w-120 bg-base-200 text-base-content"></div>
+                    <div id="response"></div>
+                </div> -->
+
               </div>
             </div>
         </div>
@@ -197,25 +198,41 @@
         const context = `<h1 id="welcome-to-mkthoughts">Welcome to MkThoughts</h1>
 <h4 id="a-custom-mkdocs-theme-with-asistant-pupu-to-help-you-summarizing">A custom MkDocs Theme with Asistant Pupu to help you summarizing!</h4>
 <h4 id="be-sure-to-click-the-button-ask-pupu">Be sure to click the button <em>Ask Pupu</em></h4>
+<hr />
+<ul>
+<li>select the correct model you want to use and setup the api key(no need for local model served by tools like ollama)<ul>
+<li>[x] DeepSeek-R1-Full-Reasoning</li>
+<li>[ ] ChatGPT-O1</li>
+<li>[ ] ChatGPT-O3-mini</li>
+<li>[ ] DeepSeek-Distill-QWen-14b-Ollama</li>
+</ul>
+</li>
+<li>talk sth to Pupu, like <code>please help me check the grammar</code></li>
+<li>she'll check the grammar of this article and help you correct it!</li>
+<li>she will keep the context unless you change the page.</li>
+</ul>
+<hr />
 <h4 id="you-can-ask-whatever-you-want-about-the-article-opened-shell-try-her-best-to-help-you-out">you can ask whatever you want about the article opened, she'll try her best to help you out!</h4>`;
-        console.log(context);
         const systemPrompt =
-            'You are a cute little girl whos name is Pupu.\n' +
-            'Your context(with begin and end wrapped below) is: \n' +
-            '----context begin----\n' +
-            context +
-            '----context end----\n' +
-            "Try to understand the context and answer the user's input as accurately as possible and" +
-            "do not make up any answers if you don't know what the user is asking about";
+'You are a cute little girl whos name is Pupu.\n'+
+'[file content begin]\n'+
+context +'\n'+
+'[file content end]\n'+
+'You will answer the user\'s question based on the context above. Dot not make up any answers if you don\'t know what the user is asking about.\n'
         const streamingChat = new quikchat(
             '#chat-container',
-            getOllamaStreamingCallback,
+            // getOllamaStreamingCallback,
+            getDeepSeekStreamingCallback,
             {
                 theme: 'quikchat-theme-dark',
-                titleArea: { title: 'Hello, my friend!', show: true, align: 'left' }
+                titleArea: { title: 'Hello, my friend!', show: true, align: 'left' },
+                systemPrompt: systemPrompt
             }
         );
-        streamingChat.messageAddNew('How can I help? ', 'Pupu', 'left');
+        streamingChat._meta.messages = [
+            { role: "system", content: systemPrompt }
+        ]
+        streamingChat.messageAddNew('How can I help? ', 'Pupu:', 'left', role='assistant');
     </script>
 
     </body>
@@ -224,6 +241,6 @@
 <!--  -->
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2025-02-24 07:13:25.054750+00:00
+Build Date UTC : 2025-02-28 18:00:30.256052+00:00
 -->
 <!--  -->
