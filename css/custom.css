@@ -1,0 +1,174 @@
+/* 重置 Tailwind 的标题样式 */
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 24px !important;
+    margin-bottom: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+}
+
+h1 {
+    font-size: 2em !important;
+    padding-bottom: 0.3em !important;
+    border-bottom: 1px solid #eaecef !important;
+}
+
+h2 {
+    font-size: 1.5em !important;
+    padding-bottom: 0.3em !important;
+    border-bottom: 1px solid #eaecef !important;
+}
+
+h3 {
+    font-size: 1.25em !important;
+}
+
+h4 {
+    font-size: 1em !important;
+}
+
+h5 {
+    font-size: 0.875em !important;
+}
+
+h6 {
+    font-size: 0.85em !important;
+    color: #6a737d !important;
+}
+
+/* 确保标题样式在深色主题下也能正常显示 */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: #e4e4e7 !important;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2 {
+    border-bottom-color: #2d2d2d !important;
+}
+
+/* 基础内容样式 */
+article {
+    color: #24292e;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] article {
+    color: #e4e4e7;
+}
+
+/* 链接样式 */
+a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+[data-theme="dark"] a {
+    color: #58a6ff;
+}
+
+/* 段落间距 */
+p {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* 列表样式 */
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-left: 2em;
+}
+
+li {
+    margin-top: 0.25em;
+}
+
+/* 代码块样式 */
+pre {
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+[data-theme="dark"] pre {
+    background-color: #1e1e1e;
+}
+
+/* 行内代码样式 */
+code:not([class*="language-"]) {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(27,31,35,0.05);
+    border-radius: 6px;
+}
+
+[data-theme="dark"] code:not([class*="language-"]) {
+    background-color: rgba(240,246,252,0.15);
+}
+
+/* 表格样式 */
+table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+th {
+    font-weight: 600;
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+}
+
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+    border-color: #2d2d2d;
+}
+
+/* 引用块样式 */
+blockquote {
+    margin: 0 0 16px;
+    padding: 0 1em;
+    color: #6a737d;
+    border-left: 0.25em solid #dfe2e5;
+}
+
+[data-theme="dark"] blockquote {
+    color: #8b949e;
+    border-left-color: #3b3b3b;
+}
+
+/* 水平线样式 */
+hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 24px 0;
+    background-color: #e1e4e8;
+    border: 0;
+}
+
+[data-theme="dark"] hr {
+    background-color: #3b3b3b;
+} 
